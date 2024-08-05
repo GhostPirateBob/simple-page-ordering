@@ -53,8 +53,8 @@ if ( ! class_exists( 'Simple_Page_Ordering' ) ) :
 			add_action( 'rest_api_init', array( __CLASS__, 'rest_api_init' ) );
 
 			// Custom edit page actions.
-			add_action( 'post_action_spo-move-under-grandparent', array( __CLASS__, 'handle_move_under_grandparent' ) );
-			add_action( 'post_action_spo-move-under-sibling', array( __CLASS__, 'handle_move_under_sibling' ) );
+			// add_action( 'post_action_spo-move-under-grandparent', array( __CLASS__, 'handle_move_under_grandparent' ) );
+			// add_action( 'post_action_spo-move-under-sibling', array( __CLASS__, 'handle_move_under_sibling' ) );
 		}
 
 		/**
@@ -437,7 +437,7 @@ if ( ! class_exists( 'Simple_Page_Ordering' ) ) :
 			if ( 0 === $post->post_parent ) {
 				$siblings = $top_level_pages;
 			} else {
-				$siblings = $children_pages[ $post->post_parent ];
+				$siblings = $children_pages[ $post->post_parent ] ?? [];
 			}
 
 			// Assume no sibling.
